@@ -8,6 +8,13 @@ namespace BenEllis.ConnectFour.Features.Game
     {
         public RelayCommand<GameMode> StartNewGameCommand { get; }
 
+        private GameBoard _board;
+        public GameBoard Board
+        {
+            get { return _board; }
+            private set { Set(ref _board, value); }
+        }
+
         public GamePageViewModel()
         {
             StartNewGameCommand = new RelayCommand<GameMode>(StartNewGame);
@@ -16,6 +23,8 @@ namespace BenEllis.ConnectFour.Features.Game
         private void StartNewGame(GameMode mode)
         {
             Debug.WriteLine($"We are starting a game in {mode} mode");
+
+            Board = new GameBoard(7, 6);
         }
     }
 }

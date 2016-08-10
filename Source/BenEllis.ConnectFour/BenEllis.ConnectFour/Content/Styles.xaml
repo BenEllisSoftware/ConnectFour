@@ -1,7 +1,14 @@
 ﻿<ResourceDictionary
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation" 
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    
+
+    <SolidColorBrush x:Key="BoardBrush" Color="#1E90FF" />
+    <SolidColorBrush x:Key="BoardDetailsBrush" Color="#78BCFF" />
+    <SolidColorBrush x:Key="PlayerOneBrush" Color="#FF0000" />
+    <SolidColorBrush x:Key="PlayerOneDetailsBrush" Color="#FF6B6B" />
+    <SolidColorBrush x:Key="PlayerTwoBrush" Color="#FFFF00" />
+    <SolidColorBrush x:Key="PlayerTwoDetailsBrush" Color="#FFFF94" />
+
     <Style x:Key="MenuButtonStyle" TargetType="Button">
         <Setter Property="FontSize" Value="20" />
         <Setter Property="Padding" Value="20 12" />

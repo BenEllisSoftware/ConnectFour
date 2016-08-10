@@ -95,6 +95,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Features\Game\GameBoard.cs" />
     <Compile Include="Features\Game\GameMode.cs" />
     <Compile Include="Features\Game\GamePage.xaml.cs">
       <DependentUpon>GamePage.xaml</DependentUpon>
