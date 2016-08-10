@@ -2,7 +2,18 @@
     x:Class="BenEllis.ConnectFour.App"
     xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-    xmlns:local="using:BenEllis.ConnectFour"
+    xmlns:features="using:BenEllis.ConnectFour.Features"
     RequestedTheme="Light">
-
+    
+    <Application.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="Content/Styles.xaml" />
+                <ResourceDictionary>
+                    <features:ViewModelLocator x:Key="Locator" />
+                </ResourceDictionary>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Application.Resources>
+    
 </Application>
