@@ -9,7 +9,8 @@
     DataContext="{Binding Source={StaticResource Locator}, Path=Game}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <controls:GameBoardControl Rows="{Binding Board.Rows}"
+        <controls:GameBoardControl ColumnSelectedCommand="{Binding ColumnClickedCommand}"
+                                   Rows="{Binding Board.Rows}"
                                    Columns="{Binding Board.Columns}"
                                    BoardBrush="{StaticResource BoardBrush}"
                                    BoardDetailsBrush="{StaticResource BoardDetailsBrush}"

@@ -9,6 +9,7 @@
         <Setter Property="SlotPadding" Value="10" />
         <Setter Property="BoardCornerRadius" Value="10" />
         <Setter Property="BoardPadding" Value="10 5" />
+        <Setter Property="Padding" Value="0 40 0 0" />
         <Setter Property="Template">
             <Setter.Value>
                 <ControlTemplate TargetType="controls:GameBoardControl">
@@ -18,8 +19,9 @@
                         BorderThickness="{TemplateBinding BorderThickness}">
                         
                         <Viewbox>
-                            <Grid>
-                                <shapes:GameBoardShape Columns="{TemplateBinding Columns}"
+                            <Grid x:Name="GameBoardGrid" Margin="{TemplateBinding Padding}" Background="Transparent">
+                                <shapes:GameBoardShape x:Name="BoardShape"
+                                                       Columns="{TemplateBinding Columns}"
                                                        Rows="{TemplateBinding Rows}"
                                                        SlotSize="{TemplateBinding SlotSize}"
                                                        SlotPadding="{TemplateBinding SlotPadding}"

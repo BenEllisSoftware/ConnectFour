@@ -1,11 +1,16 @@
-﻿using Windows.UI.Xaml;
+﻿using System;
+using System.Diagnostics;
+using System.Windows.Input;
+using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
+using Windows.UI.Xaml.Input;
 using Windows.UI.Xaml.Media;
 
 // The Templated Control item template is documented at http://go.microsoft.com/fwlink/?LinkId=234235
 
 namespace BenEllis.ConnectFour.Controls
 {
+    [TemplatePart(Name = "GameBoardGrid", Type = typeof(Grid))]
     public sealed class GameBoardControl : Control
     {
 #region Dependency properties
@@ -23,6 +28,9 @@ namespace BenEllis.ConnectFour.Controls
         public static readonly DependencyProperty PlayerOneDetailsBrushProperty = DependencyProperty.Register("PlayerOneDetailsBrush", typeof (Brush), typeof (GameBoardControl), new PropertyMetadata(default(Brush)));
         public static readonly DependencyProperty PlayerTwoBrushProperty        = DependencyProperty.Register("PlayerTwoBrush"       , typeof (Brush), typeof (GameBoardControl), new PropertyMetadata(default(Brush)));
         public static readonly DependencyProperty PlayerTwoDetailsBrushProperty = DependencyProperty.Register("PlayerTwoDetailsBrush", typeof (Brush), typeof (GameBoardControl), new PropertyMetadata(default(Brush)));
+
+        public static readonly DependencyProperty ColumnSelectedCommandProperty = DependencyProperty.Register("ColumnSelectedCommand", typeof (ICommand), typeof (GameBoardControl), new PropertyMetadata(default(ICommand)));
+        public static readonly DependencyProperty SelectedColProperty           = DependencyProperty.Register("SelectedCol"          , typeof(int)      , typeof (GameBoardControl), new PropertyMetadata(default(int)));
 
         public int Rows
         {
@@ -96,11 +104,46 @@ namespace BenEllis.ConnectFour.Controls
             set { SetValue(PlayerTwoDetailsBrushProperty, value); }
         }
 
+        public ICommand ColumnSelectedCommand
+        {
+            get { return (ICommand)GetValue(ColumnSelectedCommandProperty); }
+            set { SetValue(ColumnSelectedCommandProperty, value); }
+        }
+
+        public int SelectedCol
+        {
+            get { return (int) GetValue(SelectedColProperty); }
+            set { SetValue(SelectedColProperty, value); }
+        }
+
 #endregion
+
+        private Grid _gameBoardGrid;
 
         public GameBoardControl()
         {
             DefaultStyleKey = typeof(GameBoardControl);
+        }
+
+        protected override void OnApplyTemplate()
+        {
+            _gameBoardGrid = (Grid) GetTemplateChild("GameBoardGrid");
+            _gameBoardGrid.IsHitTestVisible = true;
+
+            _gameBoardGrid.PointerReleased += GameBoardGridOnPointerReleased;
+
+            base.OnApplyTemplate();
+        }
+
+        private void GameBoardGridOnPointerReleased(object sender, PointerRoutedEventArgs e)
+        {
+            var point = e.GetCurrentPoint(_gameBoardGrid);
+            var x = point.Position.X - BoardPadding.Left;
+            if (x < 0) return;
+            int col = (int) (x / (SlotSize + SlotPadding));
+            if (col >= Columns) return;
+            SelectedCol = col;
+            ColumnSelectedCommand?.Execute(col);
         }
     }
 }
