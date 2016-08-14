@@ -4,10 +4,21 @@
     xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:controls="using:BenEllis.ConnectFour.Controls"
     mc:Ignorable="d"
     DataContext="{Binding Source={StaticResource Locator}, Path=Game}">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        
+        <controls:GameBoardControl Rows="{Binding Board.Rows}"
+                                   Columns="{Binding Board.Columns}"
+                                   BoardBrush="{StaticResource BoardBrush}"
+                                   BoardDetailsBrush="{StaticResource BoardDetailsBrush}"
+                                   PlayerOneBrush="{StaticResource PlayerOneBrush}"
+                                   PlayerOneDetailsBrush="{StaticResource PlayerOneDetailsBrush}"
+                                   PlayerTwoBrush="{StaticResource PlayerTwoBrush}"
+                                   PlayerTwoDetailsBrush="{StaticResource PlayerTwoDetailsBrush}"
+                                   HorizontalAlignment="Center"
+                                   VerticalAlignment="Center"
+                                   Margin="20" />
     </Grid>
 </Page>

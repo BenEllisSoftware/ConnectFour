@@ -1,0 +1,47 @@
+<ResourceDictionary
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:shapes="using:BenEllis.ConnectFour.Shapes"
+    xmlns:controls="using:BenEllis.ConnectFour.Controls">
+
+    <Style TargetType="controls:GameBoardControl">
+        <Setter Property="SlotSize" Value="40" />
+        <Setter Property="SlotPadding" Value="10" />
+        <Setter Property="BoardCornerRadius" Value="10" />
+        <Setter Property="BoardPadding" Value="10 5" />
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="controls:GameBoardControl">
+                    <Border
+                        Background="{TemplateBinding Background}"
+                        BorderBrush="{TemplateBinding BorderBrush}"
+                        BorderThickness="{TemplateBinding BorderThickness}">
+                        
+                        <Viewbox>
+                            <Grid>
+                                <shapes:GameBoardShape Columns="{TemplateBinding Columns}"
+                                                       Rows="{TemplateBinding Rows}"
+                                                       SlotSize="{TemplateBinding SlotSize}"
+                                                       SlotPadding="{TemplateBinding SlotPadding}"
+                                                       BoardCornerRadius="{TemplateBinding BoardCornerRadius}"
+                                                       BoardPadding="{TemplateBinding BoardPadding}"
+                                                       Fill="{TemplateBinding BoardBrush}" />
+                                <shapes:GameBoardDetailsShape Columns="{TemplateBinding Columns}"
+                                                              Rows="{TemplateBinding Rows}"
+                                                              SlotSize="{TemplateBinding SlotSize}"
+                                                              SlotPadding="{TemplateBinding SlotPadding}"
+                                                              BoardCornerRadius="{TemplateBinding BoardCornerRadius}"
+                                                              BoardPadding="{TemplateBinding BoardPadding}"
+                                                              Stroke="{TemplateBinding BoardDetailsBrush}"
+                                                              StrokeThickness="1.0"
+                                                              HorizontalAlignment="Left"
+                                                              VerticalAlignment="Top"/>
+                            </Grid>
+                        </Viewbox>
+                        
+                    </Border>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>
