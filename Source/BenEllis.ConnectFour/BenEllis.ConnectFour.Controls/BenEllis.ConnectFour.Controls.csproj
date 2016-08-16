@@ -107,6 +107,9 @@
     <None Include="project.json" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Controls\GameBoardSlotValue.cs" />
+    <Compile Include="Game\BoardLocation.cs" />
+    <Compile Include="Game\GameUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Controls\GameBoardControl.cs" />
     <Compile Include="Shapes\GameBoardDetailsShape.cs" />

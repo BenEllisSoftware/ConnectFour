@@ -17,9 +17,15 @@
                         Background="{TemplateBinding Background}"
                         BorderBrush="{TemplateBinding BorderBrush}"
                         BorderThickness="{TemplateBinding BorderThickness}">
-                        
                         <Viewbox>
-                            <Grid x:Name="GameBoardGrid" Margin="{TemplateBinding Padding}" Background="Transparent">
+                            <Grid x:Name="PART_GameBoardGrid" IsHitTestVisible="True" Margin="{TemplateBinding Padding}" Background="Transparent">
+                                <ItemsControl x:Name="PART_Pieces" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                                    <ItemsControl.ItemsPanel>
+                                        <ItemsPanelTemplate>
+                                            <Canvas HorizontalAlignment="Stretch" VerticalAlignment="Stretch" />
+                                        </ItemsPanelTemplate>
+                                    </ItemsControl.ItemsPanel>
+                                </ItemsControl>
                                 <shapes:GameBoardShape x:Name="BoardShape"
                                                        Columns="{TemplateBinding Columns}"
                                                        Rows="{TemplateBinding Rows}"

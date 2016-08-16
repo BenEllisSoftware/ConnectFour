@@ -6,8 +6,8 @@
     <SolidColorBrush x:Key="BoardDetailsBrush" Color="#78BCFF" />
     <SolidColorBrush x:Key="PlayerOneBrush" Color="#FF0000" />
     <SolidColorBrush x:Key="PlayerOneDetailsBrush" Color="#FF6B6B" />
-    <SolidColorBrush x:Key="PlayerTwoBrush" Color="#FFFF00" />
-    <SolidColorBrush x:Key="PlayerTwoDetailsBrush" Color="#FFFF94" />
+    <SolidColorBrush x:Key="PlayerTwoBrush" Color="#EFEF00" />
+    <SolidColorBrush x:Key="PlayerTwoDetailsBrush" Color="#DDDD00" />
 
     <Style x:Key="MenuButtonStyle" TargetType="Button">
         <Setter Property="FontSize" Value="20" />
